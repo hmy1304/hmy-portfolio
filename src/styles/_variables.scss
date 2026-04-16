@@ -1,0 +1,17 @@
+// Design tokens (not theme-dependent). Use inside _themes.scss or component modules.
+
+$font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+$radius-sm: 0.5rem;
+$radius-md: 1rem;
+$radius-lg: 1.5rem;
+$radius-xl: 2rem;
+
+// Brand & semantic accents (same in both themes; use in progress bars, tags, etc.)
+$color-primary: #7c3aed;
+$color-success: #10b981;
+$color-info: #3b82f6;
+$color-warning: #f59e0b;
+
+$transition-theme: color 0.2s ease, background-color 0.2s ease,
+  border-color 0.2s ease, box-shadow 0.2s ease;
