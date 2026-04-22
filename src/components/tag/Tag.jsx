@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './Tag.module.scss'
-
 const VARIANT={
   success :styles.variant_success,
   info :styles.variant_info,
@@ -8,9 +7,9 @@ const VARIANT={
   neutral :styles.variant_neutral,
 }
 
+
 const Tag = ({
-  children,
-  variant = 'neutral'
+  children, variant = 'neutral'
 }) => {
   return (
     <span className={`${styles.tag} ${VARIANT[variant]} ?? VARIANT.neutral`}>

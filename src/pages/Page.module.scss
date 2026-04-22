@@ -1,22 +1,23 @@
 .page {
-    background-color: aliceblue;
+    max-width: 720px;
     margin: 0 auto;
     padding: 2rem 1.25rem 3rem;
 }
 .title {
     margin: 0 0 .5rem;
     font-size: 1.75rem;
-    color: var(--color-text);
+    color:var(--color-text)
 }
 .lead {
     margin-bottom: 1.5rem;
-    color: var(--color-text-muted);
+    color:var(--color-text-muted);
+    line-height: 1.6;
 }
 .back {
-    color: var(--color-primary);
+    color:var(--color-primary);
     font-weight: 600;
     font-size: .9rem;
-    &:hover {
+    &:hover{
         text-decoration: underline;
     }
 }
