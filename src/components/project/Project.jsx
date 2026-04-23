@@ -1,7 +1,32 @@
 import React from 'react'
 import styles from './Project.module.scss'
+import { motion as Motion , scale} from 'framer-motion'
 import { projectList } from '../../utils/projectList'
 import ProjectCard from '../projectCard/ProjectCard'
+
+const containerVariants = {
+    hidden:{},
+    show:{
+        transition:{
+            staggerChildren:.15,
+        }
+    }
+}
+const itemVariants = {
+    hidden:{
+        opacity:0,
+        y:24
+    },
+    show:{
+        opacity:1,
+        y:0,
+        transition:{
+            duration:.3,
+            ease:[.22, 1, .36, 1]
+        }
+    }
+}
+
 const Project = () => {
   return (
     <section className={styles.project_section} aria-labelledby='project-heading'>
@@ -9,14 +34,22 @@ const Project = () => {
             <h1 className="tit tit__m">
                   Projects I&apos;m proud of
             </h1>
-            <div className={styles.grid}>
+            <Motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{amount:.2}}
+            className={styles.grid}>
                   {projectList.map((p)=>(
-                      <ProjectCard
-                      key={p.title} 
+                    <Motion.div 
+                    variants={itemVariants}
+                    key={p.title} >
+                      <ProjectCard                     
                       {...p}
                       />
+                    </Motion.div>
                   ))}
-            </div>
+            </Motion.div>
         </div>
 
     </section>
