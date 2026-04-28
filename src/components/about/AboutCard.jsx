@@ -1,11 +1,17 @@
 import React from 'react'
 import styles from "../../pages/about/About.module.scss"
+import { motion as Motion } from 'framer-motion'
+import { contentVariants, itemVariants, visualVariants } from '../../utils/aniValue'
 
 const AboutCard = ({icons}) => {
   const IconUser = icons.user
 
   return (
-    <article 
+    <Motion.article 
+    visualVariants={visualVariants}
+    initial="hidden"
+    whileInView="show"
+    viewport={{amount:.3}}
     aria-labelledby='about-card-title'
     className={styles.card}
     >
@@ -33,7 +39,7 @@ const AboutCard = ({icons}) => {
           keep, and keep interfaces honest — fast, accessible, and easy to reason about.
         </p>
       </div>
-    </article>
+    </Motion.article>
   )
 }
 
