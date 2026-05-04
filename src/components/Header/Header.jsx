@@ -138,9 +138,9 @@ const Header = () => {
             <div
               id={panelId}
               className={styles.mobilePanel}
-              role='dialog'
+              role="dialog"
               aria-modal="true"
-              aria-label='Menu'
+              aria-label="Menu"
             >
               <nav className={styles.mobileNav} aria-label='Main'>
                 {navItems.map(({ to, label }) => (
@@ -181,7 +181,7 @@ const Header = () => {
                   onClick={toggleTheme}
                   aria-label={theme === 'dark' ? 'switch to light mode' : 'switch to dark mode'}
                 >
-                  {theme == 'dark' ? 'L' : 'D'}
+                  {theme == 'dark' ? 'Light mode' : 'Dark mode'}
                 </button>
               </div>
             </div>

@@ -1,7 +1,6 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './ProgressBar.module.scss'
 import { animate, motion as Motion, useReducedMotion } from 'framer-motion'
-
 const ACCENT = {
     primary: styles.accent_primary,
     success: styles.accent_success,
@@ -23,9 +22,9 @@ const ProgressBar = ({
 
     const accentClass = ACCENT[accent] ?? ACCENT.primary
 
-    const progressRetio = Math.min(1, Math.max(0, progress))
+    const progressRatio = Math.min(1, Math.max(0, progress))
 
-    const end = Math.min(100, Math.max(0, safe * progressRetio))
+    const end = Math.min(100, Math.max(0, safe * progressRatio))
 
     const targetDisplay = Math.round(end)
 
@@ -33,7 +32,7 @@ const ProgressBar = ({
 
     const displayRef = useRef(0)
 
-    const pctLabel = prefersReducedMotion ? targetDisplay:displayPct
+    const pctLabel = prefersReducedMotion ? targetDisplay : displayPct
 
     useEffect(() => {
 
@@ -62,18 +61,18 @@ const ProgressBar = ({
 
     }, [targetDisplay, prefersReducedMotion])
 
-    const fillTransition = prefersReducedMotion 
-    ? {type:'tween', duration:0}
-    : {type:'spring', stiffness:100, damping:22, mass:.85}
+
+    const fillTransition = prefersReducedMotion
+        ? { type: 'tween', duration: 0 }
+        : { type: 'spring', stiffness: 100, damping: 22, mass: .85 }
 
     return (
         <div className={styles.wrap}>
             <div className={styles.labelRow}>
                 <span className={styles.label}>{label}</span>
-                {showPercent?(
-                    <span  className={styles.pct}>{pctLabel}%</span>
-
-                ):null}
+                {showPercent ? (
+                    <span className={styles.pct}>{pctLabel}%</span>
+                ) : null}
             </div>
             <div className={styles.track}>
                 <Motion.div

@@ -2,7 +2,7 @@ import React from 'react'
 import { motion as Motion, useReducedMotion } from 'framer-motion'
 import AboutCard from '../../components/about/AboutCard'
 import AboutHero from '../../components/about/AboutHero'
-import EducationCard from '../../components/about/EducationCard'
+import AducationCard from '../../components/about/AducationCard'
 import CareerTimeline from '../../components/about/CareerTimeline'
 import CoreValues from '../../components/about/CoreValues'
 import styles from './About.module.scss'
@@ -11,6 +11,7 @@ import { timeline, coreValues } from '../../utils/aboutContent'
 const About = () => {
 
   const shouldReduceMotion = useReducedMotion()
+
 
   return (
     <div className={styles.about_page}>
@@ -24,7 +25,7 @@ const About = () => {
           </div>
           <aside className={styles.column}>
             <CareerTimeline icons={icons} timeline={timeline}  />
-            <EducationCard icons={icons}  />
+            <AducationCard icons={icons}  />
 
           </aside>
         </div>

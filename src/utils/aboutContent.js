@@ -1,6 +1,6 @@
-import { icons } from "./icons"
+import {icons} from './icons.jsx'
 
-export const coreValues = [
+export const coreValues=[
     {
         title: 'Quick execution',
         desc: 'Ship iteratively, validate with users, and tighten feedback loops.',

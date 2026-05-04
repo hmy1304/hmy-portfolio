@@ -1,13 +1,13 @@
-
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import Home from "./pages/home/Home"
 import About from './pages/about/About'
 import Contact from './pages/contact/Contact'
 import ProjectsPages from "./pages/projects/ProjectsPages"
-import Skills from "./pages/skills/Skills"
+import Skills from "./pages/skills/SkillsPages"
 import PlaceholderPage from "./pages/PlaceholderPage"
 import Blog from "./pages/blog/Blog"
 import  ThemeProvider from './context/ThemeProvider'
+import SkillsPages from "./pages/skills/SkillsPages"
 
 import Layout from './components/layout/Layout'
 
@@ -33,7 +33,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="projects" element={<ProjectsPages />} />
-            <Route path="skills" element={<Skills />} />
+            <Route path="skills" element={<SkillsPages />} />
             <Route path="blog" element={<Blog />} />
             <Route path="contact" element={<Contact />} />
             <Route path="privacy" element={<PlaceholderPage title="Privacy" />} />
