@@ -50,9 +50,10 @@ const ContactPage = () => {
     const [copied, setCopied] = useState(false)
     const [ name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [company, setCompany] = useState('')
     const [topic, setTopic] = useState('freelance')
     const [message, setMessage] = useState('')
-    const [budge, setBudge] = useState('')
+    const [budget, setBudget] = useState('')
     const [formState, handleFormspreeSubmit] = useForm('mqenbnkl')
     const emailLocksValid = useMemo(()=>EMAIL_OK.test(email.trim(),[email]))
 
@@ -135,6 +136,192 @@ const ContactPage = () => {
                                 ) 
                             })}
                         </div>
+                        <div className={styles.statusBlock}>
+                            <div className={styles.statusHead}>
+                                <span className={styles.statusDot} aria-hidden/>
+                                <h2 className={styles.statusTitle}>Currently open to work</h2>
+                            </div>
+                            <div className={styles.availability}>
+                                <div className={styles.availCard}>
+                                    <div className={styles.awailIcon}>
+                                        <IconBriefcase />
+                                        <p className={styles.availLabel}>Full time</p>
+                                        <p className={styles.availDesc}>Product-minded teams with strong design partnership</p>
+                                    </div>
+                                    <div className={styles.awailIcon}>
+                                        <IconLaptop />
+                                        <p className={styles.availLabel}>Full time</p>
+                                        <p className={styles.availDesc}>Product-minded teams with strong design partnership</p>
+                                    </div>
+                                    <div className={styles.awailIcon}>
+                                        <IconGlobe />
+                                        <p className={styles.availLabel}>Full time</p>
+                                        <p className={styles.availDesc}>Product-minded teams with strong design partnership</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Motion.div>
+                    <Motion.div className={styles.formCard} {...motionProps}>
+                        <div className={styles.formHead}>
+                            <h2 className={styles.formTitle}>Send a message</h2>
+                            <p className={styles.formLead}>
+                                Share a few details and I&apos;ll get back as soon as I can — usually within one business day.
+                            </p>
+                        </div>
+                        {formState.succeeded?(
+                            <p className={styles.thanks} role='status'>
+                                Thanks — your message has been sent. I&apos;ll get back to you soon.
+                            </p>
+                        ):(
+                            <form className={styles.form} onSubmit={handleSubmit}>
+                                <div className={styles.row2}>
+                                    <div className={styles.field}>
+                                        <label 
+                                        className={styles.label} 
+                                        htmlFor='contact-name'
+                                        >
+                                            Name
+                                        </label>
+                                        <input 
+                                        type="text" 
+                                        id='contact-name'
+                                        className={styles.input}
+                                        name='name'
+                                        value={name}
+                                        onChange={(e)=>setName(e.target.value)}
+                                        required
+                                        autoComplete='name'
+                                        />
+                                    </div>
+                                    <div className={styles.field}>
+                                        <label 
+                                        className={styles.label} 
+                                        htmlFor='contact-email'
+                                        >
+                                            Email
+                                        </label>
+                                        <input 
+                                        type="email" 
+                                        id='contact-email'
+                                        className={styles.input}
+                                        name='email'
+                                        value={email}
+                                        onChange={(e)=>setEmail(e.target.value)}
+                                        required
+                                        autoComplete='email'
+                                        />
+                                    </div>
+                                </div>
+                                <div className={styles.field}>
+                                    <label 
+                                    className={styles.label} 
+                                    htmlFor='contact-company'
+                                    >
+                                        Company
+                                    </label>
+                                    <input 
+                                    id='contact-company'
+                                    className={styles.input}
+                                    name='company'
+                                    value={email}
+                                    onChange={(e)=>setCompany(e.target.value)}
+                                    autoComplete='organiztion'
+                                    />
+                                </div>
+                                <div>
+                                    <p 
+                                    className={styles.inquiryLabel} 
+                                    id='topic-label'
+                                    >
+                                        Topic
+                                    </p>
+                                    <div 
+                                    className={styles.inquiryRow} 
+                                    aria-labelledby='topic-label'
+                                    role='group'
+                                    >
+                                        {topics.map(({id, label})=>(
+                                            <button
+                                            key={id}
+                                            type='button'
+                                            className={`${styles.topicBtn} ${topic===id? styles.topicBtnActive : ""}`}
+                                            onClick={()=>setTopic(id)}
+                                            aria-pressed={topic===id}
+                                            >
+                                                {label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className={styles.field}>
+                                    <label 
+                                    className={styles.label} 
+                                    htmlFor='contact-message'
+                                    >
+                                        Message
+                                    </label>
+                                    <textarea
+                                    id='contact-message'
+                                    className={styles.input}
+                                    name='message'
+                                    value={message}
+                                    onChange={(e)=>setMessage(e.target.value.slice(0, MAX_MESSAGE))}
+                                    required
+                                    maxLength={MAX_MESSAGE}
+                                    placeholder='메세지를 입력하세요'
+                                    />
+                                    <div className={styles.textareaFoot}>
+                                        <span className={styles.charCount}>
+                                            {message.length} / {MAX_MESSAGE}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className={styles.field}>
+                                    <label 
+                                    className={styles.label} 
+                                    htmlFor='contact-budget'
+                                    >
+                                        Budget range
+                                        <span className={styles.optional}>
+                                            (optional)
+                                        </span>
+                                    </label>
+                                    <select
+                                    id='contact-budget'
+                                    className={styles.select}
+                                    name='budget'
+                                    value={budget}
+                                    onChange={(e)=>setBudget(e.target.value)}
+                                    >
+                                        {budgets.map((b)=>(
+                                            <option key={b.value || 'none'} value={b.value}>
+                                                {b.label}
+                                            </option>
+                                        ))}
+                                    </select>                                   
+                                </div>
+                                <button 
+                                type='submit'
+                                className={`btn btn__primary ${styles.submit}`}
+                                disabled={
+                                    formState.submitting ||
+                                    !name.trim() ||
+                                    !email.trim() ||
+                                    !message.trim()
+                                }
+                                >
+                                    <IconSend />
+                                    {formState.submitting? 'Sending...' : 'Send message'}
+                                </button>
+                                {formState.errors?(
+                                    <p className={styles.privacyNote}>
+                                        Message failed to send. Please try again.
+                                    </p>
+                                ):null}
+                                <p className={styles.privacyNote}>our details are only used to reply — no marketing lists.</p>
+                            </form>
+                        )}
                     </Motion.div>
                 </div>
             </div>
